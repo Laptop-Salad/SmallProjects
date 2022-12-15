@@ -25,51 +25,43 @@
 | |
 """
 
-topper_name = ["star", "angel", "bow"]
-topper = ["*", "&", "%"]
+def christmas_tree(height, topper_select):
+    topper_name = ["star", "angel", "bow"]
+    topper = ["*", "&", "%"]
 
-# Get height
-height = int(input("Height: "))
+    # Get height
+    if height < 0:
+        print("Please enter a height greater than 0")
 
-while height < 0:
-    print("Please enter a number greater than 0")
-    height = int(input("Height: "))
+    # Get topper        
 
+    if topper_select < 0 or topper_select > 2:
+        print("Please enter a valid number")
 
-# Print list of toppers
-for i in range(len(topper_name)):
-    print("{number}: {topper}".format(number=i,topper=topper_name[i]))
+    bottom_row = (height - 1) + height
 
-# Get topper        
-topper_select = int(input("Enter number for topper: "))
+    # Print topper
+    space = int(bottom_row / 2)
+    star = (" " * (space + 1) + topper[topper_select])
+    print(star)
 
-while topper_select < 0 or topper_select > 2:
-    print("Please enter a valid number")
-    topper_select = int(input("Enter number for topper: "))
-
-
-bottom_row = (height - 1) + height
-
-# Print topper
-space = int(bottom_row / 2)
-star = (" " * (space + 1) + topper[topper_select])
-print(star)
-
-# Print first row
-print((" " * (space + 1) + "#"))
+    # Print first row
+    print((" " * (space + 1) + "#"))
 
 
-# Print body
-amount = 1
-for i in range(height - 1):
-    space = space = int(bottom_row / 2) - i
-    amount += 2
-    print((" " * space) + ("#" * amount))
-    
+    # Print body
+    amount = 1
+    for i in range(height - 1):
+        space = space = int(bottom_row / 2) - i
+        amount += 2
+        print((" " * space) + ("#" * amount))
+        
 
-# Print trunk
-space = int(bottom_row / 2)
-print(" " * space + "| |")
+    # Print trunk
+    space = int(bottom_row / 2)
+    print(" " * space + "| |")
+
+christmas_tree(5, 1)
 
 
 
