@@ -2,7 +2,6 @@ from fizz_buzz import fizz_buzz
 import unittest
 
 class TestFizzBuzz(unittest.TestCase):
-
     def test_regular(self):
         self.assertEqual(fizz_buzz([1,2,3]), ["1","2","Fizz"], "Should be 1 2 Fizz")
     

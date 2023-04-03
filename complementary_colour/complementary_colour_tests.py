@@ -1,8 +1,7 @@
 from complementary_colour import get_complementary_colour
 import unittest
 
-class TestComplentaryColour(unittest.TestCase):
-
+class TestComplementaryColour(unittest.TestCase):
     def test_regular(self):
         self.assertEqual(get_complementary_colour(40, 174, 80), (215, 81, 175), "Should be 215 81 175")
     

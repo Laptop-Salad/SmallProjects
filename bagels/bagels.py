@@ -1,6 +1,29 @@
+"""
+Bagels
+A deductive number guessing game.
+Description:
+    A user will be prompted to enter a digit between 2-10 (length_num), the length of the number to guess.
+    A number with length_num length will be randomly generated.
+    The user will have 10 attemps to guess the number and for each guess, there are four possibilities of output:
+        "You got it!" - Correct guess (Game ends)
+        
+        "Fermi x" - How many digits exists and in correct position.
+        "Pico x" - How many digits exists not in correct position.
+        "Wrong x" - How many wrong digits
+        
+        "Bagels" - No digits are correct.
+        
+       "You ran out of guesses." - Game ends
+       "The number I though of was x"
+    Along with number guesses the user can also supply keywords:
+        "hint" - uses up one guess, reveals one letter at random.
+        "force" - ends game and reveals number.
+
+"""
+
 from random import randint, randrange
 
-def check_guess(guess, number):
+def check_guess(guess: str, number: str) -> str:
     """Check how close a guess is to a (2-10) digit number.
 
     Args:
@@ -42,7 +65,7 @@ def check_guess(guess, number):
 
     return ' '.join(answer)
 
-def check_keywords(guess, number, hints):
+def check_keywords(guess: str, number: str, hints: list[str]) -> list[str]:
     """check guess for keywords
 
     Args:
@@ -61,9 +84,12 @@ def check_keywords(guess, number, hints):
         return ["force"] 
     elif guess.lower() == "hint":
         hint = randrange(0, len(number))
-        print("{} is in my guess".format(hints.pop(hint)))
-        
-        return ["hint", hints]
+        if len(hints) == 0:
+            print("You have used up all your hints")
+            return [""]
+        else: 
+            print("{} is in my guess".format(hints.pop(hint)))
+            return ["hint", hints]
     
     return [""]
 
@@ -149,5 +175,9 @@ def display_instruct():
     print("Fermi \t\tOne digit is correct and in the right position")
     print("Bagels \t\tNo digit is correct")
 
-display_instruct()
-start_game()
+def bagels():
+    display_instruct()
+    start_game()
+    
+if __name__ == '__main__':
+    bagels()
