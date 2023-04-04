@@ -9,10 +9,10 @@ class TestBagels(unittest.TestCase):
         self.assertEqual(check_guess("127", "000"), "Bagels")
     
     def test_check_keywords(self):
-        self.assertEqual(check_keywords("hint", "333", ["3", "3", "3"]), ["hint", ["3", "3"]])
-        self.assertEqual(check_keywords("hint", "333", []), [""])
-        self.assertEqual(check_keywords("force", "333", ["3", "3", "3"]), ["force"])
-        self.assertEqual(check_keywords("123", "333", ["3", "3", "3"]), [""])
+        self.assertEqual(check_keywords("hint", "333", ["3", "3", "3"], 0), ["hint", ["3", "3"]])
+        self.assertEqual(check_keywords("hint", "333", [], 0), ["hints-none"])
+        self.assertEqual(check_keywords("force", "333", ["3", "3", "3"], 0), ["force"])
+        self.assertEqual(check_keywords("123", "333", ["3", "3", "3"], 0), [""])
         
         
 if __name__ == "__main__":
