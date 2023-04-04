@@ -2,7 +2,8 @@
 Bagels
 A deductive number guessing game.
 Description:
-    A user will be prompted to enter a digit between 2-10 (length_num), the length of the number to guess.
+    The user will be prompted to enter a digit between 1 and 3 to decide how many numbers to generate.
+    The user will then be prompted to enter a digit between 2-10 (length_num), the length of the numbers to guess.
     A number with length_num length will be randomly generated.
     The user will have 10 attemps to guess the number and for each guess, there are four possibilities of output:
         "You got it!" - Correct guess (Game ends)
