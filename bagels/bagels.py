@@ -140,6 +140,8 @@ def game_loop(numbers: list[str], hints: list[str], length_num: int, guesses: in
     end_game(guesses)
 
 def end_game(guesses):
+    """end the bagels game
+    """
     # If the user runs out of guesses tell them the answer
     if guesses == 10:
         print("You ran out of guesses.")
