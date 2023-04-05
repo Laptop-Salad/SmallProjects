@@ -147,7 +147,7 @@ def start_birthdays():
     elif duplicates[0] == 1:
         print("In this simulation, two people have a birthday on {}".format(duplicates[1][0]))
     elif duplicates[0] > 1 and len(duplicates[1]) == 1:
-        print("In this simulation multiple people have a birthday on {}".format(duplicates[1[0]]))
+        print("In this simulation multiple people have a birthday on {}".format(duplicates[1][0]))
     else:
         print("In this simulation multiple people have birthdays on {}".format(', '.join(duplicates[1])))
 
@@ -163,8 +163,9 @@ def start_birthdays():
     
     # Run 100,000 simulations of num_birthdays
     matches = run_simulations(num_birthdays)
-    print("""Out of 100,000 simulations of {birthdays} people, there was a\n matching birthday in that group {matches} times. This means""".format(birthdays=num_birthdays, matches=matches))
-    print("that {birthdays} people have a {chance}%/ chance of\n having a mathching birthday in their group.".format(birthdays=num_birthdays, chance=calculate_chance(matches)))
+    chance = calculate_chance(matches)
+    print("Out of 100,000 simulations of {} people, there was a\nmatching birthday in that group {} times. This means".format(num_birthdays, matches))
+    print("that {} people have a {}%/ chance of\nhaving a mathching birthday in their group.".format(num_birthdays, chance))
     print("That's probably more than you would think!")
     
 
