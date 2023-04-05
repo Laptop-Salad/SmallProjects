@@ -89,7 +89,7 @@ def calculate_chance(matches: int) -> float:
     return chance
 
 def run_simulations(num: int) -> int:
-    """runs 100,00 simulations of num birthdays
+    """runs 100,000 simulations of num birthdays
 
     Args:
         num (int): birthdays to generate
