@@ -131,21 +131,24 @@ def game_loop(numbers: list[str], hints: list[str], length_num: int, guesses: in
                     numbers.pop(i)
                     if len(numbers) == 0:
                         print("You guessed all the numbers, game complete!")
-                        end_game(guesses)
+                        end_game(guesses, numbers)
                         return
                     break
             else:
                 print("Please enter using the correct format: A {} digit number.".format(length_num))
     
-    end_game(guesses)
+    end_game(guesses, numbers)
 
-def end_game(guesses):
+def end_game(guesses, numbers):
     """end the bagels game
     """
     # If the user runs out of guesses tell them the answer
     if guesses == 10:
         print("You ran out of guesses.")
-        print("The number I thought of was {}.".format(''.join(number)))
+        
+        # Print numbers though of
+        for i in numbers:
+            print("The number I thought of was {}.".format(''.join(i)))
 
     # Ask if the user wants to play again
     print("Do you want to play again? (yes or no)")
