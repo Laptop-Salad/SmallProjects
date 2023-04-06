@@ -1,5 +1,5 @@
 """
-Create a customized bitmap of the world
+Create a customized bitmap of the world.
 """
 
 bitmap = """
@@ -52,3 +52,5 @@ for line in range(0, len(split)):
             # Otherwise print a whitespace
             print(" ", end="")
     print()
+    
+print("Made out of pure 100 {} organic {}".format("%", ''.join(message)))
