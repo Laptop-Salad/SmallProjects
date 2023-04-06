@@ -53,4 +53,4 @@ for line in range(0, len(split)):
             print(" ", end="")
     print()
     
-print("Made out of pure 100 {} organic {}".format("%", ''.join(message)))
+print("Made out of pure 100{} organic {}".format("%", ''.join(message)))
