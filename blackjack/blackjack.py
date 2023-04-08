@@ -69,12 +69,14 @@ cards = ["A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 cards_type = ["Club", "Heart", "Spades", "Diamond"]
 deck = []
 
-def display_card(card: list[int] or list[str]) -> str:   
-   # Handle double digit card
+def display_card(card: list[int] or list[str]) -> str:  
+    """returns a single ascii card""" 
+   # Handle double digit card: 10
     if cards[card[0]] == "10":
         split = ten_card.splitlines(True)
         new_card = """"""
         
+        # Replace character with correct type
         for line in split:
             current_line = ""
             for character in line:
@@ -84,10 +86,12 @@ def display_card(card: list[int] or list[str]) -> str:
                 else:
                     current_line += character
     else:
+        # Get the correct type of card
         ascii_card = ascii_cards_type[card[1]+1]
         split = ascii_card.splitlines(True)
         new_card = """"""
         
+        # Replace character with correct letter, for example: King, Ace, etc.
         for line in split:
             current_line = ""
             for character in line:
@@ -101,6 +105,11 @@ def display_card(card: list[int] or list[str]) -> str:
     return new_card
 
 def display_player(player: Player) -> None:
+    """displays all cards for the player
+
+    Args:
+        player (Player): The player object
+    """
     lines = ["","","","",""]
     print("PLAYER:", player.sum)
     for card in player.cards:
@@ -114,6 +123,12 @@ def display_player(player: Player) -> None:
     print("\n")
         
 def display_dealer(dealer: Dealer, first_hidden=False) -> None:
+    """display all cards for the dealer
+
+    Args:
+        dealer (Dealer): The dealer object
+        first_hidden (bool, optional): If the first card should be hidden. Defaults to False.
+    """
     lines = ["","","","",""]
     print("DEALER:", dealer.sum)
     for card in dealer.cards:
@@ -131,9 +146,11 @@ def display_dealer(dealer: Dealer, first_hidden=False) -> None:
     print("\n")
     
 def hit(current_sum: int) -> str and int:
+    # Randomly get a card
     card = randrange(0, len(cards))
     card_type = randrange(0, len(cards_type))
     
+    # Calculate points
     if card == 0:
         if (current_sum + 11) > 21:
             points = 1
