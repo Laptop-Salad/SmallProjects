@@ -69,11 +69,7 @@ cards = ["A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 cards_type = ["Club", "Heart", "Spades", "Diamond"]
 deck = []
 
-def display_card(card: list[int] or list[str]) -> str:
-    if card[0] == "unknown":
-        print(ascii_cards_type[0])
-        return
-    
+def display_card(card: list[int] or list[str]) -> str:   
    # Handle double digit card
     if cards[card[0]] == "10":
         split = ten_card.splitlines(True)
@@ -117,11 +113,15 @@ def display_player(player: Player) -> None:
     
     print("\n")
         
-def display_dealer(dealer: Dealer) -> None:
+def display_dealer(dealer: Dealer, first_hidden=False) -> None:
     lines = ["","","","",""]
     print("DEALER:", dealer.sum)
     for card in dealer.cards:
-        split_card = display_card(card).splitlines()
+        if first_hidden is True:
+            split_card = ascii_cards_type[0].splitlines()
+            first_hidden = False
+        else:
+            split_card = display_card(card).splitlines()
         for i in range(0, 5):
             lines[i] += split_card[i]
     
@@ -202,9 +202,8 @@ def start_game(bet: int):
     dealer.cards.append(hit_dealer[0])
     dealer.sum += hit_dealer[1]
     
-    print("DEALER: ???")
-    print(display_card(dealer.cards[0]))
-    display_card(["unknown"])
+    # Display dealer cards with first card hidden
+    display_dealer(dealer, True)
     
     # Give player 2 cards
     hit_player = hit(0)
