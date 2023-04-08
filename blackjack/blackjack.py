@@ -279,18 +279,33 @@ def start_game(bet: int):
         print("You lose your bet")
         return 0
 
-def init_game():
-    print("Money: 5000")
-    print("How much do you bet (1-5000, or QUIT)")
+def init_game(money: int):
+    print("Money: {}".format(money))
+    print("How much do you bet (1-{}, or QUIT)".format(money))
     bet = input(">")
     if bet.lower() == "quit":
         return
     
-    if bet.isnumeric() and (int(bet) >= 1 or int(bet) <= 5000):
-        bet = start_game(int(bet))
+    if bet.isnumeric() and (int(bet) >= 1 and int(bet) <= money):
+        money -= int(bet)
+        money += start_game(int(bet))
+        
+        if money == 0:
+            print("Damn you have no money left, you can't play anymore")
+            return
+
+        print("Do you want to continue playing? You have {} money. Enter Y to continue.".format(money))
+        play_again = input("\n>")
+        
+        if play_again.lower() == "y":
+            init_game(money)
+        else:
+            print("Thanks for playing!")
+            return
+        
     else:
         print("Please enter a bet of 1-5000 or QUIT")
         return
 
 if __name__ == '__main__':
-    init_game()
+    init_game(5000)
