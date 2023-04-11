@@ -1,6 +1,11 @@
 """
 Caesar Cipher
+
+Encrypt and decrypt messages.
 """
+
+letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 
 def encrypt(key: int, message: str) -> str:
     """encrypt a message given a key
@@ -22,7 +27,7 @@ def encrypt(key: int, message: str) -> str:
     for letter in message:
         # If its a space just add a space
         if letter == " ":
-            new_letter = " "
+            encrypted_message.append(" ")
         # If the letter is uppercase, we don't need to convert it to uppercase before searching for it in letters
         elif letter.isupper():
             # If shifting the letter is beyond the length of letters
@@ -32,6 +37,8 @@ def encrypt(key: int, message: str) -> str:
                 new_letter = letters[remainder]
             else:
                 new_letter = letters[letters.index(letter) + key]
+            
+            encrypted_message.append(new_letter)
         # If the letter is lowercase, we need to convert it to uppercase before searching for it in letters
         else:
             # If shifting the letter is beyond the length of letters
@@ -40,9 +47,9 @@ def encrypt(key: int, message: str) -> str:
                 remainder = (letters.index(letter.upper()) + key) - (len(letters))
                 new_letter = letters[remainder]
             else:
-                new_letter = letters[letters.index(letter.upper()) + key].lower()
-                
-        encrypted_message.append(new_letter)
+                new_letter = letters[letters.index(letter.upper()) + key]
+            
+            encrypted_message.append(new_letter.lower())
         
     return ''.join(encrypted_message)
    
@@ -66,7 +73,7 @@ def decrypt(key: int, message: str) -> str:
     for letter in message:
         # If its a space just add a space
         if letter == " ":
-            new_letter = " "
+            decrypted_message.append(" ")
         # If the letter is uppercase, we don't need to convert it to uppercase before searching for it in letters
         elif letter.isupper():
             # If shifting the letter is beyond the length of letters
@@ -76,6 +83,8 @@ def decrypt(key: int, message: str) -> str:
                 new_letter = letters[remainder]
             else:
                 new_letter = letters[letters.index(letter) - key]
+            
+            decrypted_message.append(new_letter)
         # If the letter is lowercase, we need to convert it to uppercase before searching for it in letters
         else:
             # If shifting the letter is beyond the length of letters
@@ -84,9 +93,9 @@ def decrypt(key: int, message: str) -> str:
                 remainder = (letters.index(letter.upper()) - key) - (len(letters))
                 new_letter = letters[remainder]
             else:
-                new_letter = letters[letters.index(letter.upper()) - key].lower()
+                new_letter = letters[letters.index(letter.upper()) - key]
                 
-        decrypted_message.append(new_letter)
+            decrypted_message.append(new_letter.lower())
         
     return ''.join(decrypted_message)
 
@@ -108,44 +117,47 @@ def check_message(message: str) -> bool:
     
     return True
 
-letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-# Get whether user wants encryption or decryption
-print("Do you want to (e)ncrypt or (d)ecrypt?")
-answer = input(">")
-
-# Ensure answer is valid
-while answer.lower() != "e" and answer.lower() != "d":
-    print("Please enter (e) for encryption or (d) for decryption.")
+def start_cipher():
+    # Get whether user wants encryption or decryption
+    print("Do you want to (e)ncrypt or (d)ecrypt?")
     answer = input(">")
 
-# Get key
-print("Please enter the key (0 to 25) to use.")
-key = input(">")
+    # Ensure answer is valid
+    while answer.lower() != "e" and answer.lower() != "d":
+        print("Please enter (e) for encryption or (d) for decryption.")
+        answer = input(">")
 
-# Ensure key is valid
-while not key.isnumeric() or int(key) < 0 or int(key) > 25:
+    # Get key
     print("Please enter the key (0 to 25) to use.")
     key = input(">")
 
-# Since key is valid convert to int
-key = int(key)
+    # Ensure key is valid
+    while not key.isnumeric() or int(key) < 0 or int(key) > 25:
+        print("Please enter the key (0 to 25) to use.")
+        key = input(">")
 
-# Get message to encrypt/decrypt
-if answer.lower() == "e":
-    print("Enter message to encrypt.")
-else:
-    print("Enter message to decrypt.")
+    # Since key is valid convert to int
+    key = int(key)
 
-message = input(">")
+    # Get message to encrypt/decrypt
+    if answer.lower() == "e":
+        print("Enter message to encrypt.")
+    else:
+        print("Enter message to decrypt.")
 
-# Ensure message is valid, only contains letters of the alphabet or spaces
-while not check_message(message):
-    print("Please ensure message is only letters of the alphabet or spaces.") 
     message = input(">")
 
-# Pass key and message to function to be encrypted/decrypted
-if answer.lower() == "e":
-    print(encrypt(key, message))
-else:
-    print(decrypt(key, message))
+    # Ensure message is valid, only contains letters of the alphabet or spaces
+    while not check_message(message):
+        print("Please ensure message is only letters of the alphabet or spaces.") 
+        message = input(">")
+
+    # Pass key and message to function to be encrypted/decrypted
+    if answer.lower() == "e":
+        print(encrypt(key, message))
+    else:
+        print(decrypt(key, message))
+
+if __name__ == '__main__':
+    start_cipher()
