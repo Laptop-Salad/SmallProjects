@@ -77,5 +77,6 @@ while not check_message(message):
     print("Please ensure message is only letters of the alphabet or spaces.") 
     message = input(">")
 
+# For each key (total 26), decrypt the message
 for key in range(0, 25):
     print("Key #{}: {}".format(key, decrypt(key, message)))
