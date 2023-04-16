@@ -8,7 +8,7 @@ from random import sample, randint
 
 pronouns = ["Him", "Her", "Them"]
 establishments = ["Companies", "Banks", "Doctors", "Airlines"]
-figures = ["Dog", "Cat", "Pensioner", "Fisherman", "Banker", "Cyclist"]
+figures = ["Dog", "Cat", "Pensioner", "Fisherman", "Banker", "Cyclist", "Employee", "Artist", "Seal", "Raccoon"]
 tasks = ["Invented", "Saved", "Shut Down", "Went From"]
 superiors = ["Faster", "Cheaper", "Unique", "Softer", "Superior", "Cleaner"]
 objects = ["Vacuum Cleaner", "Car", "Massage Chair", "Computer", "Mirror", "Fridge", "Pencil", "Clock", "Sweater", "Coffee Maker", "Oven", "Currency"]
