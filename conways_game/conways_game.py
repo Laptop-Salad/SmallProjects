@@ -13,8 +13,6 @@ The simulation will stop if there have been no changes to the grid in 1 iteratio
 
 from sys import stdout as terminal
 from time import sleep
-from itertools import cycle
-from threading import Thread
 import os
 
 print("Do not resize window while program is running")
