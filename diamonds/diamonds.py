@@ -25,7 +25,7 @@ size = int(size)
 
 Diamond generation is based on the following variables (based on first half of diamond, second half is reversed):
 1. spaces outside of diamond = starts at size * 2 and decreases by 1
-2. spaces inside of diamond = starts at 0, doubles
+2. spaces inside of diamond = starts at 0, increases by 2
 """
 height = size * 2
 total_spaces_out = size - 1
