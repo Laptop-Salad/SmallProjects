@@ -1,3 +1,7 @@
+"""
+Digital Clock
+"""
+
 import sevseg, os
 import datetime
 from time import sleep
