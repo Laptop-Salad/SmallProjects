@@ -1,7 +1,7 @@
 # Journal
 The most basic command-line journal written in using .NET 8.
 
-Created for the sole purpose of using the Singleton pattern.
+Created for the sole purpose of using the Singleton pattern and for learning .NET.
 
 ## How to setup this project
 Refer to the following to install and run dotnet for development: https://dotnet.microsoft.com/en-us/learn/dotnet/hello-world-tutorial/install
